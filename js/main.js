@@ -7,8 +7,8 @@ var MIN_HEIGHT = 1;
 var WIZARDS = 8;
 var mapPins = document.querySelectorAll('.map__pins')[0];
 
-function pointsGenerator () {
-  for(var i = 1; i <= WIZARDS; i++) {
+function pointsGenerator() {
+  for (var i = 1; i <= WIZARDS; i++) {
     var item = {
       author: {
         avatar: 'img/avatars/user0' + i + '.png'
@@ -25,15 +25,15 @@ function pointsGenerator () {
   }
 }
 
-function randomizer (arr) {
+function randomizer(arr) {
   return Math.floor(Math.random() * arr.length) + 1;
 }
 
-function pinGenerator () {
+function pinGenerator() {
   var templatePin = document.querySelector('#pin').content;
   var fragment = document.createDocumentFragment();
 
-  for(var i = 0; i < items.length; i++) {
+  for (var i = 0; i < items.length; i++) {
     var element = templatePin.cloneNode(true);
     var button = element.querySelector('.map__pin');
     var image = element.querySelector('img');
@@ -43,9 +43,8 @@ function pinGenerator () {
     image.setAttribute('alt', items[i].offer.type[(randomizer(items[i].offer.type))]);
     fragment.appendChild(element);
   };
-
   mapPins.appendChild(fragment);
 }
 
 pointsGenerator();
-pinGenerator ();
+pinGenerator();
