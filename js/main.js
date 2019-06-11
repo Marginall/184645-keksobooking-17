@@ -5,7 +5,7 @@ var MIN_WIDTH = 1;
 var MAX_HEIGHT = 704;
 var MIN_HEIGHT = 1;
 var WIZARDS = 8;
-var mapPins = document.querySelectorAll('.map__pins');
+var mapPins = document.querySelectorAll('.map__pins')[0];
 
 function pointsGenerator () {
   for(var i = 1; i <= WIZARDS; i++) {
@@ -44,7 +44,7 @@ function pinGenerator () {
     fragment.appendChild(element);
   };
 
-  mapPins[0].appendChild(fragment);
+  mapPins.appendChild(fragment);
 }
 
 pointsGenerator();
