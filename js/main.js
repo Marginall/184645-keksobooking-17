@@ -42,7 +42,8 @@ function pinGenerator() {
     image.setAttribute('src', items[i].author.avatar);
     image.setAttribute('alt', items[i].offer.type[(randomizer(items[i].offer.type))]);
     fragment.appendChild(element);
-  };
+  }
+
   mapPins.appendChild(fragment);
 }
 
