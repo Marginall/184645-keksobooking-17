@@ -2,8 +2,8 @@
 var items = [];
 var MAX_WIDTH = 1200;
 var MIN_WIDTH = 1;
-var MAX_HEIGHT = 704;
-var MIN_HEIGHT = 1;
+var MAX_HEIGHT = 630;
+var MIN_HEIGHT = 130;
 var POINTS_LENGTH = 8;
 var map = document.querySelector('.map');
 var mapPins = map.querySelectorAll('.map__pins')[0];
@@ -89,6 +89,8 @@ var onMainPinClick = function () {
   for (var j = 0; j < filterControls.length; j++) {
     filterControls[j].removeAttribute('disabled');
   }
+
+  mainPin.removeEventListener('click', onMainPinClick);
 };
 
 disableControls();
