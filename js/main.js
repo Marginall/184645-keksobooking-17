@@ -122,7 +122,7 @@ type.addEventListener('change', onChangeType);
 
 selectTime.addEventListener('change', function (evt) {
   var index = evt.target.selectedIndex;
-  var option;
+  var option = evt.target.querySelectorAll('option');
 
   if (evt.target === timeIn) {
     option = timeOut.querySelectorAll('option');
@@ -136,7 +136,7 @@ selectTime.addEventListener('change', function (evt) {
     option[i].removeAttribute('selected');
 
     if (index === i) {
-      option[i].setAttribute('selected', '');
+      option[i].selected = true;
     }
   }
 });
