@@ -19,6 +19,11 @@ var filter = document.querySelector('.map__filters');
 var filterControls = filter.querySelectorAll('fieldset, select');
 var positionX = Math.round(MAP_PIN_TOP + MAP_PIN_HEIGHT / 2);
 var positionY = Math.round(MAP_PIN_LEFT + MAP_PIN_WIDTH / 2);
+var type = form.querySelector('#type');
+var price = form.querySelector('#price');
+var selectTime = form.querySelector('.ad-form__element--time');
+var timeIn = form.querySelector('#timein');
+var timeOut = form.querySelector('#timeout');
 
 function pointsGenerate() {
   for (var i = 1; i <= POINTS_LENGTH; i++) {
@@ -96,3 +101,42 @@ var onMainPinClick = function () {
 disableControls();
 setAdress();
 mainPin.addEventListener('click', onMainPinClick);
+
+var onChangeType = function (evt) {
+  if (evt.target.value === 'bungalo') {
+    price.setAttribute('min', 0);
+    price.setAttribute('placeholder', '0');
+  } else if (evt.target.value === 'flat') {
+    price.setAttribute('min', 1000);
+    price.setAttribute('placeholder', '1000');
+  } else if (evt.target.value === 'house') {
+    price.setAttribute('min', 5000);
+    price.setAttribute('placeholder', '5000');
+  } else if (evt.target.value === 'palace') {
+    price.setAttribute('min', 10000);
+    price.setAttribute('placeholder', '10000');
+  }
+};
+
+type.addEventListener('change', onChangeType);
+
+selectTime.addEventListener('change', function (evt) {
+  var index = evt.target.selectedIndex;
+  var option = evt.target.querySelectorAll('option');
+
+  if (evt.target === timeIn) {
+    option = timeOut.querySelectorAll('option');
+  }
+
+  if (evt.target === timeOut) {
+    option = timeIn.querySelectorAll('option');
+  }
+
+  for (var i = 0; i < option.length; i++) {
+    option[i].removeAttribute('selected');
+
+    if (index === i) {
+      option[i].selected = true;
+    }
+  }
+});
