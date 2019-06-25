@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-  var items = [];
   var map = document.querySelector('.map');
   var mainPin = map.querySelector('.map__pin--main');
   var form = document.querySelector('.ad-form');
@@ -21,8 +20,7 @@
 
   var onMainPinClick = function () {
     map.classList.remove('map--faded');
-    window.pointsGenerate(items);
-    window.pinGenerate(items);
+    window.load();
     window.enableControls(formControls);
 
     dragged = false;
