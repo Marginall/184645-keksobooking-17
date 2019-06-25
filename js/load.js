@@ -28,6 +28,6 @@
 
   function onSuccess(data) {
     window.pinGenerate(data);
-  };
+  }
 
 })();
