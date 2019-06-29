@@ -6,7 +6,7 @@
   window.sort = false;
 
   var filterSort = function (arr, value) {
-    var sortFilter = items.filter(function (item) {
+    var sortFilter = arr.filter(function (item) {
       if (value === 'any') {
         return item;
       } else {
