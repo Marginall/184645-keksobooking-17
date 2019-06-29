@@ -19,7 +19,7 @@
       fragment.appendChild(element);
     };
 
-    items.forEach(function (item, index, array) {
+    items.forEach(function (item, index) {
       if (index < PINS_LENGTH) {
         elementGenerate(index);
       }

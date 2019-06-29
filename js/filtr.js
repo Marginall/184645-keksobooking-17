@@ -5,7 +5,7 @@
   var housingType = filter.querySelector('#housing-type');
   window.sort = false;
 
-  var filterSort = function (value) {
+  var filterSort = function (items, value) {
 
     var sortFilter = items.filter(function (item) {
       if (value === 'any') {
@@ -21,7 +21,7 @@
 
   filter.addEventListener('change', function (evt) {
     if (evt.target === housingType) {
-      filterSort(evt.target.value);
+      filterSort(items, evt.target.value);
     }
   });
 })();
