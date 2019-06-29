@@ -10,7 +10,9 @@
 
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
+        window.items = xhr.response;
         onSuccess(xhr.response);
+        console.log(xhr.response);
       } else {
         onError();
       }
@@ -26,8 +28,8 @@
     block.appendChild(fragment);
   };
 
-  function onSuccess(data) {
-    window.pinGenerate(data);
+  function onSuccess(items) {
+    window.pinGenerate(items);
   }
 
 })();
