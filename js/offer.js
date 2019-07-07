@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  window.offerGenerate = function(items) {
+  window.offerGenerate = function (items) {
     var map = document.querySelector('.map');
     var templateOffer = document.querySelector('#card').content;
     var element = templateOffer.cloneNode(true);
@@ -21,14 +21,14 @@
 
     title.textContent = items[1].offer.title;
     address.textContent = items[1].offer.address;
-    price.innerHTML = items[1].offer.price + ' ' + '&#x20bd;' + ' ' + '<span>/ночь</span>';
+    price.innerHTML = items[1].offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>';
     description.textContent = items[1].offer.description;
-    capacity.textContent = items[1].offer.rooms +' ' + 'комнаты для' +' ' + items[1].offer.guests + ' ' + 'гостей';
+    capacity.textContent = items[1].offer.rooms + ' комнаты для ' + items[1].offer.guests + ' гостей';
     time.textContent = 'Заезд после' + ' ' + items[1].offer.checkin + ', выезд до ' + items[1].offer.checkout;
     image.setAttribute('src', items[1].author.avatar);
 
-    var getTypes = function (type) {
-      switch (type) {
+    type.textContent = function () {
+      switch (items[1].offer.type) {
         case 'flat':
           return 'Квартира';
         case 'bungalo':
@@ -37,14 +37,14 @@
           return 'Дом';
         case 'palace':
           return 'Дворец';
+        default:
+          throw new Error('Неизвестный тип');
       }
-    };
-
-    type.textContent = getTypes(items[1].offer.type);
+    }();
 
     var tempFeatures = [];
     items[1].offer.features.forEach(function (item, i) {
-      features.forEach(function(feature, index) {
+      features.forEach(function (feature) {
         if (feature.classList.contains('popup__feature--' + items[1].offer.features[i])) {
           tempFeatures.push(feature);
         }
@@ -52,11 +52,11 @@
     });
     featuresBlock.innerHTML = '';
 
-    tempFeatures.forEach(function(item, index) {
+    tempFeatures.forEach(function (item) {
       featuresBlock.appendChild(item);
     });
 
-    items[1].offer.photos.forEach(function (item, i) {
+    items[1].offer.photos.forEach(function (item) {
       var newImage = photo.cloneNode(true);
       newImage.src = item;
       newImage.alt = items[1].offer.title;
