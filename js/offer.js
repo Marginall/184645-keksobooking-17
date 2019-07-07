@@ -17,7 +17,7 @@
     var description = element.querySelector('.popup__description');
     var photoBlock = element.querySelector('.popup__photos');
     var photo = photoBlock.querySelector('.popup__photo');
-    let image = element.querySelector('.popup__avatar');
+    var image = element.querySelector('.popup__avatar');
 
     title.textContent = items[1].offer.title;
     address.textContent = items[1].offer.address;
