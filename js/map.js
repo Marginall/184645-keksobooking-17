@@ -4,11 +4,11 @@
   window.pinGenerate = function (items) {
     var map = document.querySelector('.map');
     var mapPins = map.querySelectorAll('.map__pins')[0];
-    var templatePin = document.querySelector('#pin').content;
     var fragment = document.createDocumentFragment();
     var PINS_LENGTH = 5;
 
     var elementGenerate = function (i) {
+      var templatePin = document.querySelector('#pin').content;
       var element = templatePin.cloneNode(true);
       var button = element.querySelector('.map__pin');
       var image = element.querySelector('img');

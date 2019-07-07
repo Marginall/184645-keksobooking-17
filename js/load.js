@@ -29,6 +29,7 @@
 
   function onSuccess(items) {
     window.pinGenerate(items);
+    window.offerGenerate(window.items);
   }
 
 })();
