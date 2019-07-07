@@ -16,6 +16,7 @@
 
     window.sort = true;
     window.pinGenerate(sortFilter);
+    window.offerGenerate(sortFilter);
   };
 
   filter.addEventListener('change', function (evt) {

@@ -12,6 +12,7 @@
       if (xhr.status === 200) {
         window.items = xhr.response;
         onSuccess(xhr.response);
+        console.log(window.items);
       } else {
         onError();
       }
@@ -29,7 +30,5 @@
 
   function onSuccess(items) {
     window.pinGenerate(items);
-    window.offerGenerate(window.items);
   }
-
 })();
