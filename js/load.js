@@ -11,7 +11,7 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
         window.items = xhr.response;
-        onSuccess(xhr.response);
+        onSuccess(window.items);
       } else {
         onError();
       }
@@ -29,7 +29,5 @@
 
   function onSuccess(items) {
     window.pinGenerate(items);
-    window.offerGenerate(window.items);
   }
-
 })();
