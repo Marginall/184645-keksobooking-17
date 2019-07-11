@@ -46,9 +46,9 @@
     }();
 
     var tempFeatures = [];
-    item.offer.features.forEach(function (element, i) {
+    item.offer.features.forEach(function (element) {
       features.forEach(function (feature) {
-        if (feature.classList.contains('popup__feature--' + item.offer.features[i])) {
+        if (feature.classList.contains('popup__feature--' + element)) {
           tempFeatures.push(feature);
         }
       });
