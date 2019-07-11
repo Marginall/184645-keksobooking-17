@@ -53,6 +53,7 @@
         }
       });
     });
+
     featuresBlock.innerHTML = '';
     tempFeatures.forEach(function (el) {
       featuresBlock.appendChild(el);
