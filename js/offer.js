@@ -46,7 +46,6 @@
     }();
 
     var tempFeatures = [];
-    var element;
     /* eslint-disable no-shadow */
     item.offer.features.forEach(function (element) {
       features.forEach(function (feature) {
