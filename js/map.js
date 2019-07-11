@@ -35,13 +35,14 @@
     mapPins.appendChild(fragment);
 
     var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+    var pinOnClickHandler = function (evt) {
+      var data = JSON.parse(evt.currentTarget.getAttribute('data-offer'));
+      window.offerGenerate(data);
+    };
 
     if (pin.length) {
       pin.forEach(function (item) {
-        item.addEventListener('click', function (evt) {
-            var data = JSON.parse(this.getAttribute('data-offer'));
-            window.offerGenerate(data);
-        });
+        item.addEventListener('click', pinOnClickHandler);
       });
     }
   };

@@ -73,13 +73,13 @@
       card.parentNode.removeChild(card);
       close.removeEventListener('click', onCloseHandler);
       document.removeEventListener('keydown', onEscapeKeyClose);
-    }
+    };
 
     var onEscapeKeyClose = function (evt) {
       if (evt.keyCode === KEY_ESC) {
         onCloseHandler();
       }
-    }
+    };
 
     close.addEventListener('click', onCloseHandler);
     document.addEventListener('keydown', onEscapeKeyClose);
