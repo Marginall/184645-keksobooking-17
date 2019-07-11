@@ -46,6 +46,7 @@
     }();
 
     var tempFeatures = [];
+    /* eslint-disable no-shadow */
     item.offer.features.forEach(function (element) {
       features.forEach(function (feature) {
         if (feature.classList.contains('popup__feature--' + element)) {
@@ -54,10 +55,12 @@
       });
     });
     featuresBlock.innerHTML = '';
+    /* eslint-disable no-shadow */
     tempFeatures.forEach(function (element) {
       featuresBlock.appendChild(element);
     });
 
+    /* eslint-disable no-shadow */
     item.offer.photos.forEach(function (image) {
       var newImage = photo.cloneNode(true);
       newImage.src = image;
