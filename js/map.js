@@ -14,7 +14,7 @@
       var image = element.querySelector('img');
 
       button.setAttribute('style', 'left:' + items[i].location.x + 'px;' + 'top:' + items[i].location.y + 'px;');
-      button.setAttribute('data-offer', JSON.stringify(items[i]))
+      button.setAttribute('data-offer', JSON.stringify(items[i]));
       image.setAttribute('src', items[i].author.avatar);
       image.setAttribute('alt', items[i].offer.type[(randomizer(items[i].offer.type))]);
       fragment.appendChild(element);
@@ -38,9 +38,9 @@
 
     if (pin.length) {
       pin.forEach(function (item) {
-        item.addEventListener('click', function () {
-          var data = JSON.parse(this.getAttribute('data-offer'));
-          window.offerGenerate(data);
+        item.addEventListener('click', function (evt) {
+            var data = JSON.parse(this.getAttribute('data-offer'));
+            window.offerGenerate(data);
         });
       });
     }
