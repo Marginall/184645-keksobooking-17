@@ -14,6 +14,7 @@
       var image = element.querySelector('img');
 
       button.setAttribute('style', 'left:' + items[i].location.x + 'px;' + 'top:' + items[i].location.y + 'px;');
+      button.setAttribute('data-offer', JSON.stringify(items[i]))
       image.setAttribute('src', items[i].author.avatar);
       image.setAttribute('alt', items[i].offer.type[(randomizer(items[i].offer.type))]);
       fragment.appendChild(element);
@@ -22,7 +23,6 @@
     items.forEach(function (item, index) {
       if (index < NUMBER_OF_PINS) {
         elementGenerate(index);
-        window.offerGenerate(item, index);
       }
     });
 
@@ -33,6 +33,17 @@
     }
 
     mapPins.appendChild(fragment);
+
+    var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+
+    if (pin.length) {
+      pin.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var data = JSON.parse(this.getAttribute('data-offer'));
+          window.offerGenerate(data);
+        });
+      });
+    }
   };
 
   function randomizer(arr) {

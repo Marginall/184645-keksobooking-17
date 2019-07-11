@@ -11,8 +11,7 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
         window.items = xhr.response;
-        onSuccess(xhr.response);
-        console.log(window.items);
+        onSuccess(window.items);
       } else {
         onError();
       }

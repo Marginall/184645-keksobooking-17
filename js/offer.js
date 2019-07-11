@@ -1,11 +1,12 @@
 'use strict';
 
 (function () {
-  window.offerGenerate = function (item, index) {
+  window.offerGenerate = function (item) {
     var map = document.querySelector('.map');
     var templateOffer = document.querySelector('#card').content;
     var element = templateOffer.cloneNode(true);
     var card = element.querySelector('.map__card');
+    var close = card.querySelector('.popup__close');
     var fragment = document.createDocumentFragment();
     var title = element.querySelector('.popup__title');
     var address = element.querySelector('.popup__text--price');
@@ -19,17 +20,18 @@
     var photoBlock = element.querySelector('.popup__photos');
     var photo = photoBlock.querySelector('.popup__photo');
     var image = element.querySelector('.popup__avatar');
+    var KEY_ESC = 27;
 
-    title.textContent = items[index].offer.title;
-    address.textContent = items[index].offer.address;
-    price.innerHTML = items[index].offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>';
-    description.textContent = items[index].offer.description;
-    capacity.textContent = items[index].offer.rooms + ' комнаты для ' + items[index].offer.guests + ' гостей';
-    time.textContent = 'Заезд после' + ' ' + items[index].offer.checkin + ', выезд до ' + items[index].offer.checkout;
-    image.setAttribute('src', items[index].author.avatar);
+    title.textContent = item.offer.title;
+    address.textContent = item.offer.address;
+    price.innerHTML = item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>';
+    description.textContent = item.offer.description;
+    capacity.textContent = item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей';
+    time.textContent = 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout;
+    image.setAttribute('src', item.author.avatar);
 
     type.textContent = function () {
-      switch (items[index].offer.type) {
+      switch (item.offer.type) {
         case 'flat':
           return 'Квартира';
         case 'bungalo':
@@ -44,29 +46,39 @@
     }();
 
     var tempFeatures = [];
-    items[index].offer.features.forEach(function (item, i) {
+    item.offer.features.forEach(function (element, i) {
       features.forEach(function (feature) {
-        if (feature.classList.contains('popup__feature--' + items[index].offer.features[i])) {
+        if (feature.classList.contains('popup__feature--' + item.offer.features[i])) {
           tempFeatures.push(feature);
         }
       });
     });
     featuresBlock.innerHTML = '';
-
-    tempFeatures.forEach(function (item) {
-      featuresBlock.appendChild(item);
+    tempFeatures.forEach(function (element) {
+      featuresBlock.appendChild(element);
     });
 
-    items[index].offer.photos.forEach(function (item) {
+    item.offer.photos.forEach(function (image) {
       var newImage = photo.cloneNode(true);
-      newImage.src = item;
-      newImage.alt = items[index].offer.title;
+      newImage.src = image;
+      newImage.alt = item.offer.title;
       photoBlock.appendChild(newImage);
     });
     photoBlock.removeChild(photoBlock.children[0]);
 
-    card.classList.add('hidden');
     fragment.appendChild(element);
     map.appendChild(fragment);
+
+    var onCloseHandler = function () {
+      card.parentNode.removeChild(card);
+    }
+
+    close.addEventListener('click', onCloseHandler);
+    document.addEventListener('keydown', function (evt) {
+
+      if (evt.keyCode === KEY_ESC) {
+        onCloseHandler();
+      }
+    });
   };
 })();

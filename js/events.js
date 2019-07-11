@@ -3,6 +3,7 @@
 (function () {
   var map = document.querySelector('.map');
   var mainPin = map.querySelector('.map__pin--main');
+  var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
   var form = document.querySelector('.ad-form');
   var formControls = form.querySelectorAll('fieldset');
   var MAX_WIDTH = 1200;
