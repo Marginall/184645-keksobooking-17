@@ -13,18 +13,24 @@
         window.items = xhr.response;
         onSuccess(window.items);
       } else {
-        onError();
+        window.onError();
       }
     });
   };
 
-  var onError = function () {
+  window.onError = function () {
     var block = document.querySelector('main');
     var template = document.querySelector('#error').content;
     var element = template.cloneNode(true);
     var fragment = document.createDocumentFragment();
     fragment.appendChild(element);
     block.appendChild(fragment);
+
+    var errorButton = document.querySelector('.error__button');
+    errorButton.addEventListener('click', function () {
+      var errorBlock = block.querySelector('.error');
+      errorBlock.remove();
+    });
   };
 
   function onSuccess(items) {
