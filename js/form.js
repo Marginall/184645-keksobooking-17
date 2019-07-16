@@ -92,7 +92,7 @@
 		var url = 'https://js.dump.academy/keksobooking/';
 		var data = new FormData(form);
 
-    console.log(1);
+    console.log(2);
 		var xhr = new XMLHttpRequest();
 		xhr.open('post', url);
 		// xhr.setRequestHeader('Content-Type', 'multipart/form-data;');
