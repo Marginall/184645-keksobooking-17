@@ -89,13 +89,12 @@
 		evt.preventDefault();
 
 		var form = document.querySelector('.ad-form');
-		var url = 'https://js.dump.academy/keksobooking/';
+		var url = 'https://js.dump.academy/keksobooking';
 		var data = new FormData(form);
 
-    console.log(3);
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST', url);
-		xhr.setRequestHeader('Content-Type', 'multipart/form-data;');
+    xhr.responseType = 'json';
 		xhr.send(data);
 
 		if (xhr.status === 200) {

@@ -20,7 +20,7 @@
 
   var onMainPinClick = function () {
     map.classList.remove('map--faded');
-    window.load();
+    window.request.load();
     window.enableControls(formControls);
 
     dragged = false;
