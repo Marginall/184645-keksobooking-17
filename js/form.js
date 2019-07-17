@@ -87,22 +87,8 @@
 
 	var formSubmit = function (evt) {
 		evt.preventDefault();
-
-		var form = document.querySelector('.ad-form');
-		var url = 'https://js.dump.academy/keksobooking';
-		var data = new FormData(form);
-
-		var xhr = new XMLHttpRequest();
-		xhr.open('POST', url);
-    xhr.responseType = 'json';
-		xhr.send(data);
-
-		if (xhr.status === 200) {
-			map.classList.add('map--faded');
-			disableControls();
-		} else {
-			window.onError();
-		}
+		var data = new FormData();
+		window.requests.send(data, window.onLoad, window.onError);
 	};
 
 	disableControls();
