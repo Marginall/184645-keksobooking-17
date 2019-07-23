@@ -22,7 +22,6 @@
     map.classList.remove('map--faded');
     window.requests.load(null, window.onSuccess, window.onSuccess);
     window.enableControls(formControls);
-
     dragged = false;
   };
 
