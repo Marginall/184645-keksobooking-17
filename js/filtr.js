@@ -6,19 +6,20 @@
   var price = filter.querySelector('#housing-price');
   var rooms = filter.querySelector('#housing-rooms');
   var guests = filter.querySelector('#housing-guests');
-
+  var buffer = window.items;
+  var sortData = null;
   window.sort = false;
+
   var filterSort = function (arr, value, param) {
-    var sortData = arr.filter(function (item) {
+    sortData = arr.filter(function (item) {
       if (value === 'any') {
         return item;
       } else {
-        // console.log(item.offer.guests);
         switch (param) {
           case 'type':
             return item.offer.type === value;
           case 'price':
-            return console.log('2');
+            return filterPrice(item, value);
           case 'rooms':
             return item.offer.rooms === parseInt(value);
           case 'guests':
@@ -31,10 +32,25 @@
     });
 
     window.sort = true;
+
     window.pinGenerate(sortData);
   };
 
+  var filterPrice = function (item, value) {
+    switch (value) {
+      case 'middle':
+        return item.offer.price > 10000 && item.offer.price < 50000;
+      case 'low':
+        return item.offer.price < 10000;
+      case 'high':
+        return item.offer.price > 50000;
+      default:
+        throw new Error('Неизвестный тип');
+    }
+  };
+
   filter.addEventListener('change', function (evt) {
+
     switch (evt.target) {
       case type:
         return filterSort(window.items, evt.target.value, 'type');
