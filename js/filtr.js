@@ -6,7 +6,6 @@
   var price = filter.querySelector('#housing-price');
   var rooms = filter.querySelector('#housing-rooms');
   var guests = filter.querySelector('#housing-guests');
-  var buffer = window.items;
   var sortData = null;
   window.sort = false;
 
@@ -53,13 +52,13 @@
 
     switch (evt.target) {
       case type:
-        return filterSort(window.items, evt.target.value, 'type');
+        return window.sort ? filterSort(sortData, evt.target.value, 'type') : filterSort(window.items, evt.target.value, 'type');
       case price:
-        return filterSort(window.items, evt.target.value, 'price');
+        return window.sort ? filterSort(sortData, evt.target.value, 'price') : filterSort(window.items, evt.target.value, 'price');
       case rooms:
-        return filterSort(window.items, evt.target.value, 'rooms');
+        return window.sort ? filterSort(sortData, evt.target.value, 'rooms') : filterSort(window.items, evt.target.value, 'rooms');
       case guests:
-        return filterSort(window.items, evt.target.value, 'guests');
+        return window.sort ? filterSort(sortData, evt.target.value, 'guests') : filterSort(window.items, evt.target.value, 'guests');
       default:
         throw new Error('Неизвестный тип');
     }
