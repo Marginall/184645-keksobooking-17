@@ -72,6 +72,8 @@
       }
     };
 
+    window.onLoad ? console.log(1) : console.log(2);
+
     var onMouseUp = function (moveEvt) {
       moveEvt.preventDefault();
 

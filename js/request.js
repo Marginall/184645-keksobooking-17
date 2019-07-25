@@ -49,12 +49,16 @@
     window.pinGenerate(items);
   }
 
-  window.onLoad = function (items) {
-    console.load('load');
+  window.onLoad = function () {
+    var map = document.querySelector('.map');
+    window.resetForm();
+    window.removeMapPins();
+    window.disableControls();
+    map.classList.add('map--faded');
   }
 
-  var LOAD_URL = 'https://js.dump.academy/keksobooking/data';
   var SEND_URL = 'https://js.dump.academy/keksobooking';
+  var LOAD_URL = 'https://js.dump.academy/keksobooking/data';
 
   window.requests = {
     send: load('POST', SEND_URL),

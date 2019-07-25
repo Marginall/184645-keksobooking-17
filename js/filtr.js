@@ -30,9 +30,12 @@
       }
     });
 
-    window.sort = true;
+    var pinUpdate = function () {
 
-    window.pinGenerate(sortData);
+    };
+
+    window.sort ? pinUpdate(sortData) : window.pinGenerate(sortData);
+    window.sort = true;
   };
 
   var filterPrice = function (item, value) {
@@ -49,7 +52,6 @@
   };
 
   filter.addEventListener('change', function (evt) {
-
     switch (evt.target) {
       case type:
         return window.sort ? filterSort(sortData, evt.target.value, 'type') : filterSort(window.items, evt.target.value, 'type');

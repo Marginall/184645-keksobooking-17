@@ -13,7 +13,7 @@
   var timeIn = form.querySelector('#timein');
   var timeOut = form.querySelector('#timeout');
 
-  function disableControls() {
+  window.disableControls = function () {
     form.classList.add('ad-form--disabled');
 
     for (var i = 0; i < formControls.length; i++) {
@@ -65,9 +65,9 @@
 
   form.addEventListener('submit', function (evt) {
     evt.preventDefault();
+    window.requests.send(new FormData(form), window.onLoad, window.onError);
 
     if (form.checkValidity()) {
-      window.requests.send(new FormData(form), window.onLoad, window.onError);
     }
   });
 
@@ -122,5 +122,9 @@
     }
   });
 
-  disableControls();
+  window.resetForm = function () {
+    form.reset();
+  };
+
+  window.disableControls();
 })();

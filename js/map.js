@@ -26,10 +26,15 @@
       }
     });
 
+    window.removeMapPins = function () {
+      var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+      pin.forEach(function (item) {
+        item.remove();
+      });
+    };
+
     if (window.sort) {
-      while (mapPins.firstChild) {
-        mapPins.removeChild(mapPins.firstChild);
-      }
+      window.removeMapPins();
     }
 
     mapPins.appendChild(fragment);
