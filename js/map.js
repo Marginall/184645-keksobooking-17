@@ -5,7 +5,6 @@
     var map = document.querySelector('.map');
     var mapPins = map.querySelectorAll('.map__pins')[0];
     var fragment = document.createDocumentFragment();
-    var NUMBER_OF_PINS = 5;
 
     var elementGenerate = function (i) {
       var templatePin = document.querySelector('#pin').content;
@@ -21,7 +20,7 @@
     };
 
     items.forEach(function (item, index) {
-      if (index < NUMBER_OF_PINS) {
+      if (index < window.constants.NUMBER_OF_PINS) {
         elementGenerate(index);
       }
     });

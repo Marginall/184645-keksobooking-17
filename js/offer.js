@@ -20,7 +20,6 @@
     var photoBlock = element.querySelector('.popup__photos');
     var photo = photoBlock.querySelector('.popup__photo');
     var image = element.querySelector('.popup__avatar');
-    var KEY_ESC = 27;
 
     title.textContent = item.offer.title;
     address.textContent = item.offer.address;
@@ -77,7 +76,7 @@
     };
 
     var onEscapeKeyClose = function (evt) {
-      if (evt.keyCode === KEY_ESC) {
+      if (evt.keyCode === window.constants.KEY_ESC) {
         onCloseHandler();
       }
     };
