@@ -11,7 +11,7 @@
   var MIN_HEIGHT = 130;
   var MAP_PIN_WIDTH = 65;
   var MAP_PIN_HEIGHT = 44 + 22;
-  var dragged = true;
+  window.dragged = true;
 
   var setAdress = function (x, y) {
     var address = form.querySelector('#address');
@@ -22,7 +22,7 @@
     map.classList.remove('map--faded');
     window.requests.load(null, window.onSuccess, window.onSuccess);
     window.enableControls(formControls);
-    dragged = false;
+    window.dragged = false;
   };
 
   mainPin.addEventListener('mousedown', function (evt) {
@@ -67,12 +67,11 @@
 
       setAdress(parseInt(mainPin.style.left, 10), parseInt(mainPin.style.top, 10));
 
-      if (dragged) {
+      if (window.dragged) {
+        console.log(11);
         onMainPinClick();
       }
     };
-
-    window.onLoad ? console.log(1) : console.log(2);
 
     var onMouseUp = function (moveEvt) {
       moveEvt.preventDefault();

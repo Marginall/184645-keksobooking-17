@@ -49,14 +49,6 @@
     window.pinGenerate(items);
   }
 
-  window.onLoad = function () {
-    var map = document.querySelector('.map');
-    window.resetForm();
-    window.removeMapPins();
-    window.disableControls();
-    map.classList.add('map--faded');
-  }
-
   var SEND_URL = 'https://js.dump.academy/keksobooking';
   var LOAD_URL = 'https://js.dump.academy/keksobooking/data';
 
