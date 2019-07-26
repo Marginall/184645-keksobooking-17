@@ -40,7 +40,11 @@
 
     var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
     var pinOnClickHandler = function (evt) {
+      var popup = document.querySelectorAll('.map__card');
       var data = JSON.parse(evt.currentTarget.getAttribute('data-offer'));
+      popup.forEach(function (item) {
+        item.remove();
+      });
       window.offerGenerate(data);
     };
 
