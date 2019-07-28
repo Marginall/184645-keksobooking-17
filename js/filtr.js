@@ -13,7 +13,7 @@
 
     window.sort = {
       type: type.value === 'any' ? true : type.value,
-      price: price.value === 'any' ? window.sort.price = true : filterPrice(price , price.value),
+      price: price.value === 'any' ? window.sort.price = true : false,
       rooms: rooms.value === 'any' ? true : parseInt(rooms.value),
       guests: guests.value === 'any' ? true : parseInt(guests.value),
       features: filterFeature()
@@ -22,19 +22,31 @@
     arr.forEach(function (item) {
       var params = {
         type: item.offer.type === window.sort.type || window.sort.type === true,
+        price: window.sort.price === false ? filterPrice(item, price.value) : true,
         rooms: item.offer.rooms === window.sort.rooms || window.sort.rooms === true,
         guests: item.offer.guests === window.sort.guests || window.sort.guests === true,
         features : true
       };
       filterFeatures(item, params);
+      console.log(params.price);
 
-      if (params.type && params.rooms && params.guests && params.features) {
+      if (params.type && params.price && params.rooms && params.guests && params.features) {
         sortItems.push(item);
       }
     });
 
     console.log(sortItems);
     window.pinGenerate(sortItems);
+  };
+
+  var filterPrice = function (item, value) {
+    if (value === 'middle') {
+      if (item.offer.price > 10000 || item.offer.price < 50000) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   };
 
   var filterFeatures = function (item, params) {
@@ -45,19 +57,6 @@
         params.features = true;
       }
     });
-  };
-
-  var filterPrice = function (item, value) {
-    switch (value) {
-      case 'middle':
-        item.value > 10000 && item.value < 50000;
-      case 'low':
-        return item.offer.price < 10000;
-      case 'high':
-        return item.offer.price > 50000;
-      default:
-        throw new Error('Неизвестный тип');
-    }
   };
 
   var filterFeature = function () {
