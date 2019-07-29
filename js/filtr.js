@@ -28,7 +28,6 @@
         features : true
       };
       filterFeatures(item, params);
-      console.log(params.price);
 
       if (params.type && params.price && params.rooms && params.guests && params.features) {
         sortItems.push(item);
@@ -40,17 +39,17 @@
 
   var filterPrice = function (item, value) {
     if (value === 'high') {
-      if (item.offer.price > 50000) {
+      if (item.offer.price > window.constants.HIGH_PRICE) {
         return true;
       }
       return false;
     } else if (value === 'low') {
-      if (item.offer.price < 1000) {
+      if (item.offer.price < window.constants.LOW_PRICE) {
         return true;
       }
       return false;
     } else if (value === 'middle') {
-      if (item.offer.price > 10000 && item.offer.price < 50000) {
+      if (item.offer.price > window.constants.LOW_PRICE && item.offer.price < window.constants.HIGH_PRICE) {
         return true;
       }
       return false;
@@ -80,7 +79,6 @@
 
   filter.addEventListener('change', function () {
     window.debounce(function () {
-      window.onCloseHandler();
       filterSort(window.items);
     });
   });

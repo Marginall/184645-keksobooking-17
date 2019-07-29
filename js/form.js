@@ -86,16 +86,16 @@
 
   var onChangeType = function (evt) {
     if (evt.target.value === 'bungalo') {
-      price.setAttribute('min', 0);
+      price.setAttribute('min',  window.constants.BUNGALO_MIN_PRICE);
       price.setAttribute('placeholder', '0');
     } else if (evt.target.value === 'flat') {
-      price.setAttribute('min', 1000);
+      price.setAttribute('min', window.constants.FLAT_MIN_PRICE);
       price.setAttribute('placeholder', '1000');
     } else if (evt.target.value === 'house') {
-      price.setAttribute('min', 5000);
+      price.setAttribute('min', window.constants.HOUSE_MIN_PRICE);
       price.setAttribute('placeholder', '5000');
     } else if (evt.target.value === 'palace') {
-      price.setAttribute('min', 10000);
+      price.setAttribute('min', window.constants.PALACE_MIN_PRICE);
       price.setAttribute('placeholder', '10000');
     }
   };
@@ -104,21 +104,21 @@
 
   selectTime.addEventListener('change', function (evt) {
     var index = evt.target.selectedIndex;
-    var option = evt.target.querySelectorAll('option');
+    var options = evt.target.querySelectorAll('option');
 
     if (evt.target === timeIn) {
-      option = timeOut.querySelectorAll('option');
+      options = timeOut.querySelectorAll('option');
     }
 
     if (evt.target === timeOut) {
-      option = timeIn.querySelectorAll('option');
+      options = timeIn.querySelectorAll('option');
     }
 
-    for (var i = 0; i < option.length; i++) {
-      option[i].removeAttribute('selected');
+    for (var i = 0; i < options.length; i++) {
+      options[i].removeAttribute('selected');
 
       if (index === i) {
-        option[i].selected = true;
+        options[i].selected = true;
       }
     }
   });

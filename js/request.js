@@ -7,7 +7,7 @@
       xhr.responseType = 'json';
 
       var requestHandler = function () {
-        if (xhr.status === 200) {
+        if (xhr.status === window.constants.SUCCESS_STATUS) {
           window.items = xhr.response;
           onSuccess(window.items);
         } else {

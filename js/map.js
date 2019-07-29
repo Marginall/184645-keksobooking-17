@@ -26,8 +26,8 @@
     });
 
     window.removeMapPins = function () {
-      var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
-      pin.forEach(function (item) {
+      var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+      pins.forEach(function (item) {
         item.remove();
       });
     };
@@ -37,13 +37,12 @@
     }
 
     mapPins.appendChild(fragment);
-    console.log(mapPins);
 
     var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
     var pinOnClickHandler = function (evt) {
-      var popup = document.querySelectorAll('.map__card');
+      var popups = document.querySelectorAll('.map__card');
       var data = JSON.parse(evt.currentTarget.getAttribute('data-offer'));
-      popup.forEach(function (item) {
+      popups.forEach(function (item) {
         item.remove();
       });
       evt.target.classList.add('map__pin--active');
