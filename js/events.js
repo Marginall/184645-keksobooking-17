@@ -7,11 +7,6 @@
   var formControls = form.querySelectorAll('fieldset');
   window.dragged = true;
 
-  var setAdress = function (x, y) {
-    var address = form.querySelector('#address');
-    address.setAttribute('value', (x + (Math.floor(window.constants.MAP_PIN_WIDTH / 2)) + ', ' + (y + window.constants.MAP_PIN_HEIGHT)));
-  };
-
   var onMainPinClick = function () {
     map.classList.remove('map--faded');
     window.requests.load(null, window.onSuccess, window.onSuccess);
@@ -59,7 +54,7 @@
         mainPin.style.top = window.constants.MAX_HEIGHT + 'px';
       }
 
-      setAdress(parseInt(mainPin.style.left, 10), parseInt(mainPin.style.top, 10));
+      window.setAdress(parseInt(mainPin.style.left, 10), parseInt(mainPin.style.top, 10));
 
       if (window.dragged) {
         onMainPinClick();

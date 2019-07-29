@@ -3,6 +3,7 @@
 (function () {
   var form = document.querySelector('.ad-form');
   var formControls = form.querySelectorAll('fieldset');
+  var address = form.querySelector('#address');
   var filter = document.querySelector('.map__filters');
   var filterControls = filter.querySelectorAll('fieldset, select');
   var type = form.querySelector('#type');
@@ -122,7 +123,12 @@
     }
   });
 
+  window.setAdress = function (x, y) {
+    address.setAttribute('value', (x + (Math.floor(window.constants.MAP_PIN_WIDTH / 2)) + ', ' + (y + window.constants.MAP_PIN_HEIGHT)));
+  };
+
   window.resetForm = function () {
+    address.setAttribute('value', '');
     form.reset();
   };
 
