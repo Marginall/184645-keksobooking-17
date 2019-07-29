@@ -37,19 +37,21 @@
     }
 
     mapPins.appendChild(fragment);
+    console.log(mapPins);
 
-    var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+    var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
     var pinOnClickHandler = function (evt) {
       var popup = document.querySelectorAll('.map__card');
       var data = JSON.parse(evt.currentTarget.getAttribute('data-offer'));
       popup.forEach(function (item) {
         item.remove();
       });
+      evt.target.classList.add('map__pin--active');
       window.offerGenerate(data);
     };
 
-    if (pin.length) {
-      pin.forEach(function (item) {
+    if (pins.length) {
+      pins.forEach(function (item) {
         item.addEventListener('click', pinOnClickHandler);
       });
     }

@@ -34,7 +34,7 @@
     window.pinGenerate(items);
   }
 
-  var SEND_URL = 'https://js.dump.academy/keksobooking1';
+  var SEND_URL = 'https://js.dump.academy/keksobooking';
   var LOAD_URL = 'https://js.dump.academy/keksobooking/data';
 
   window.requests = {

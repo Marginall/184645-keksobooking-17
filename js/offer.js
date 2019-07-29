@@ -69,7 +69,11 @@
     fragment.appendChild(element);
     map.appendChild(fragment);
 
-    var onCloseHandler = function () {
+    window.onCloseHandler = function () {
+      var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+      pins.forEach(function (item) {
+        item.classList.remove('map__pin--active');
+      });
       card.parentNode.removeChild(card);
       close.removeEventListener('click', onCloseHandler);
       document.removeEventListener('keydown', onEscapeKeyClose);
@@ -77,11 +81,11 @@
 
     var onEscapeKeyClose = function (evt) {
       if (evt.keyCode === window.constants.KEY_ESC) {
-        onCloseHandler();
+        window.onCloseHandler();
       }
     };
 
-    close.addEventListener('click', onCloseHandler);
+    close.addEventListener('click', window.onCloseHandler);
     document.addEventListener('keydown', onEscapeKeyClose);
   };
 })();

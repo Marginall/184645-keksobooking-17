@@ -80,6 +80,7 @@
 
   filter.addEventListener('change', function () {
     window.debounce(function () {
+      window.onCloseHandler();
       filterSort(window.items);
     });
   });

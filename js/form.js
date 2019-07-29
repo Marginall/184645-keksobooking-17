@@ -128,8 +128,11 @@
   };
 
   window.resetForm = function () {
+    window.onCloseHandler();
     form.reset();
   };
+
+  form.addEventListener('reset', window.resetForm);
 
   window.disableControls();
 })();
