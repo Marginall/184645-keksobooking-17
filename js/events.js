@@ -5,12 +5,15 @@
   var mainPin = map.querySelector('.map__pin--main');
   var form = document.querySelector('.ad-form');
   var formControls = form.querySelectorAll('fieldset');
+  var filter = document.querySelector('.map__filters');
+  var filterControls = filter.querySelectorAll('fieldset, select');
   window.dragged = true;
 
   var onMainPinClick = function () {
     map.classList.remove('map--faded');
     window.requests.load(null, window.onSuccess, window.onSuccess);
     window.enableControls(formControls);
+    window.enableControls(filterControls);
     window.dragged = false;
   };
 

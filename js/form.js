@@ -22,7 +22,7 @@
     }
 
     for (var j = 0; j < filterControls.length; j++) {
-      formControls[j].setAttribute('disabled', 'disabled');
+      filterControls[j].setAttribute('disabled', 'disabled');
     }
   }
 
@@ -128,7 +128,6 @@
   };
 
   window.resetForm = function () {
-    address.setAttribute('value', '');
     form.reset();
   };
 
