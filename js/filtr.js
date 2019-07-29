@@ -35,7 +35,6 @@
       }
     });
 
-    console.log(sortItems);
     window.pinGenerate(sortItems);
   };
 
@@ -80,6 +79,8 @@
   };
 
   filter.addEventListener('change', function () {
-    filterSort(window.items);
+    window.debounce(function () {
+      filterSort(window.items);
+    });
   });
 })();
