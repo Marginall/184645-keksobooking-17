@@ -24,7 +24,7 @@
     for (var j = 0; j < filterControls.length; j++) {
       filterControls[j].setAttribute('disabled', 'disabled');
     }
-  }
+  };
 
   if (roomNumber.value === '1') {
     capacity.item(0).style = 'display: none';
@@ -66,9 +66,9 @@
 
   form.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    window.requests.send(new FormData(form), window.onLoad, window.onError);
 
     if (form.checkValidity()) {
+      window.requests.send(new FormData(form), window.onLoad, window.onError);
     }
   });
 
@@ -86,7 +86,7 @@
 
   var onChangeType = function (evt) {
     if (evt.target.value === 'bungalo') {
-      price.setAttribute('min',  window.constants.BUNGALO_MIN_PRICE);
+      price.setAttribute('min', window.constants.BUNGALO_MIN_PRICE);
       price.setAttribute('placeholder', '0');
     } else if (evt.target.value === 'flat') {
       price.setAttribute('min', window.constants.FLAT_MIN_PRICE);
@@ -128,7 +128,6 @@
   };
 
   window.resetForm = function () {
-    window.onCloseHandler();
     form.reset();
   };
 

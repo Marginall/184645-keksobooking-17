@@ -71,11 +71,11 @@
 
     window.onCloseHandler = function () {
       var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
-      pins.forEach(function (item) {
-        item.classList.remove('map__pin--active');
+      pins.forEach(function (pin) {
+        pin.classList.remove('map__pin--active');
       });
       card.parentNode.removeChild(card);
-      close.removeEventListener('click', onCloseHandler);
+      close.removeEventListener('click', window.onCloseHandler);
       document.removeEventListener('keydown', onEscapeKeyClose);
     };
 

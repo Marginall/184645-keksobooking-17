@@ -14,8 +14,8 @@
     window.sort = {
       type: type.value === 'any' ? true : type.value,
       price: price.value === 'any' ? true : false,
-      rooms: rooms.value === 'any' ? true : parseInt(rooms.value),
-      guests: guests.value === 'any' ? true : parseInt(guests.value),
+      rooms: rooms.value === 'any' ? true : parseInt(rooms.value, 10),
+      guests: guests.value === 'any' ? true : parseInt(guests.value, 10),
       features: filterFeature()
     };
 
@@ -25,7 +25,7 @@
         price: window.sort.price === false ? filterPrice(item, price.value) : true,
         rooms: item.offer.rooms === window.sort.rooms || window.sort.rooms === true,
         guests: item.offer.guests === window.sort.guests || window.sort.guests === true,
-        features : true
+        features: true
       };
       filterFeatures(item, params);
 
@@ -54,10 +54,11 @@
       }
       return false;
     }
+    return false;
   };
 
   var filterFeatures = function (item, params) {
-    window.sort.features.forEach(function (feature, i) {
+    window.sort.features.forEach(function (feature) {
       if (item.offer.features.indexOf(feature)) {
         params.features = false;
       } else {

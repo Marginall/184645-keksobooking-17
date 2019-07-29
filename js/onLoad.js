@@ -30,5 +30,5 @@
 
     document.addEventListener('click', removeOverlay);
     document.addEventListener('keydown', removeOverlay);
-  }
+  };
 })();
