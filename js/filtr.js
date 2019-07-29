@@ -13,7 +13,7 @@
 
     window.sort = {
       type: type.value === 'any' ? true : type.value,
-      price: price.value === 'any' ? window.sort.price = true : false,
+      price: price.value === 'any' ? true : false,
       rooms: rooms.value === 'any' ? true : parseInt(rooms.value),
       guests: guests.value === 'any' ? true : parseInt(guests.value),
       features: filterFeature()
@@ -40,12 +40,21 @@
   };
 
   var filterPrice = function (item, value) {
-    if (value === 'middle') {
-      if (item.offer.price > 10000 || item.offer.price < 50000) {
+    if (value === 'high') {
+      if (item.offer.price > 50000) {
         return true;
-      } else {
-        return false;
       }
+      return false;
+    } else if (value === 'low') {
+      if (item.offer.price < 1000) {
+        return true;
+      }
+      return false;
+    } else if (value === 'middle') {
+      if (item.offer.price > 10000 && item.offer.price < 50000) {
+        return true;
+      }
+      return false;
     }
   };
 
