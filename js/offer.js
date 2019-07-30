@@ -68,16 +68,16 @@
       photoBlock.removeChild(photoBlock.children[0]);
     };
 
-    item.offer.title.length !== 0 ? title.textContent = item.offer.title : setHiddenBlock(title);
-    item.offer.address.length !== 0 ? address.textContent = item.offer.address : setHiddenBlock(address);
-    item.offer.price.length !== 0 ? price.innerHTML = item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
-    item.offer.description.length !== 0 ? description.textContent = item.offer.description : setHiddenBlock(description);
-    item.offer.rooms.length !== 0 ? capacity.textContent = item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
-    item.offer.checkin.length !== 0 ? time.textContent = 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout : setHiddenBlock(time);
+    item.offer.title.length ? title.textContent = item.offer.title : setHiddenBlock(title);
+    item.offer.address.length ? address.textContent = item.offer.address : setHiddenBlock(address);
+    item.offer.price.length ? price.innerHTML = item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
+    item.offer.description.length ? description.textContent = item.offer.description : setHiddenBlock(description);
+    item.offer.rooms.length ? capacity.textContent = item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
+    item.offer.checkin.length ? time.textContent = 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout : setHiddenBlock(time);
     item.author.avatar ? image.setAttribute('src', item.author.avatar) : setHiddenBlock(image);
-    item.offer.features.length !== 0 ? generateFeature() : setHiddenBlock(featuresBlock);
-    item.offer.type.length !== 0 ? getOfferType() : setHiddenBlock(type);
-    item.offer.photos.length !== 0 ? generatePhotos() : setHiddenBlock(photoBlock);
+    item.offer.features.length ? generateFeature() : setHiddenBlock(featuresBlock);
+    item.offer.type.length ? getOfferType() : setHiddenBlock(type);
+    item.offer.photos.length ? generatePhotos() : setHiddenBlock(photoBlock);
 
     fragment.appendChild(element);
     map.appendChild(fragment);
