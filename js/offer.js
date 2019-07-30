@@ -74,10 +74,30 @@
     description.textContent = item.offer.description.length ? item.offer.description : setHiddenBlock(description);
     capacity.textContent = item.offer.rooms.length ? item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
     time.textContent = item.offer.checkin.length ? 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout : setHiddenBlock(time);
-    item.author.avatar ? image.setAttribute('src', item.author.avatar) : setHiddenBlock(image);
-    item.offer.features.length ? generateFeature() : setHiddenBlock(featuresBlock);
-    item.offer.type.length ? getOfferType() : setHiddenBlock(type);
-    item.offer.photos.length ? generatePhotos() : setHiddenBlock(photoBlock);
+
+    if (item.author.avatar) {
+      image.setAttribute('src', item.author.avatar);
+    } else {
+      setHiddenBlock(image);
+    }
+
+    if (item.offer.photos.length) {
+      generatePhotos();
+    } else {
+      setHiddenBlock(photoBlock);
+    }
+
+    if (item.offer.features.length) {
+      generateFeature();
+    } else {
+      setHiddenBlock(featuresBlock);
+    }
+
+    if (item.offer.type.length) {
+      getOfferType();
+    } else {
+      setHiddenBlock(type);
+    }
 
     fragment.appendChild(element);
     map.appendChild(fragment);
