@@ -68,7 +68,7 @@
       photoBlock.removeChild(photoBlock.children[0]);
     };
 
-    item.offer.title.length ? title.textContent = item.offer.title : setHiddenBlock(title);
+    title.textContent = item.offer.title.length ? item.offer.title : setHiddenBlock(title);
     item.offer.address.length ? address.textContent = item.offer.address : setHiddenBlock(address);
     item.offer.price.length ? price.innerHTML = item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
     item.offer.description.length ? description.textContent = item.offer.description : setHiddenBlock(description);
