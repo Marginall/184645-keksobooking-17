@@ -12,6 +12,7 @@
     fragment.appendChild(element);
     map.appendChild(fragment);
     window.resetForm();
+    window.onCloseHandler();
     window.removeMapPins();
     window.disableControls();
     map.classList.add('map--faded');

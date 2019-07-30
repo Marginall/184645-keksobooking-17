@@ -74,7 +74,7 @@
       pins.forEach(function (pin) {
         pin.classList.remove('map__pin--active');
       });
-      card.parentNode.removeChild(card);
+      card.remove();
       close.removeEventListener('click', window.onCloseHandler);
       document.removeEventListener('keydown', onEscapeKeyClose);
     };

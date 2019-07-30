@@ -34,6 +34,7 @@
       }
     });
 
+    window.onCloseHandler();
     window.pinGenerate(sortItems);
   };
 
