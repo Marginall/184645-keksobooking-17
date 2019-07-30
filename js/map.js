@@ -20,7 +20,7 @@
     };
 
     items.forEach(function (item, index) {
-      if (index < window.constants.NUMBER_OF_PINS) {
+      if (item.offer && index < window.constants.NUMBER_OF_PINS) {
         elementGenerate(index);
       }
     });

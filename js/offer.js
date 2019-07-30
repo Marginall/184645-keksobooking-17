@@ -20,51 +20,64 @@
     var photoBlock = element.querySelector('.popup__photos');
     var photo = photoBlock.querySelector('.popup__photo');
     var image = element.querySelector('.popup__avatar');
-
-    title.textContent = item.offer.title;
-    address.textContent = item.offer.address;
-    price.innerHTML = item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>';
-    description.textContent = item.offer.description;
-    capacity.textContent = item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей';
-    time.textContent = 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout;
-    image.setAttribute('src', item.author.avatar);
-
-    type.textContent = function () {
-      switch (item.offer.type) {
-        case 'flat':
-          return 'Квартира';
-        case 'bungalo':
-          return 'Бунгало';
-        case 'house':
-          return 'Дом';
-        case 'palace':
-          return 'Дворец';
-        default:
-          throw new Error('Неизвестный тип');
-      }
-    }();
-
     var tempFeatures = [];
-    item.offer.features.forEach(function (el) {
-      features.forEach(function (feature) {
-        if (feature.classList.contains('popup__feature--' + el)) {
-          tempFeatures.push(feature);
-        }
+
+    var setHiddenBlock = function (block) {
+      block.setAttribute('style', 'display: none;');
+    };
+
+    var generateFeature = function () {
+      item.offer.features.forEach(function (el) {
+        features.forEach(function (feature) {
+          if (feature.classList.contains('popup__feature--' + el)) {
+            tempFeatures.push(feature);
+          }
+        });
       });
-    });
 
-    featuresBlock.innerHTML = '';
-    tempFeatures.forEach(function (el) {
-      featuresBlock.appendChild(el);
-    });
+      featuresBlock.innerHTML = '';
+      tempFeatures.forEach(function (el) {
+        featuresBlock.appendChild(el);
+      });
+    };
 
-    item.offer.photos.forEach(function (src) {
-      var newImage = photo.cloneNode(true);
-      newImage.src = src;
-      newImage.alt = item.offer.title;
-      photoBlock.appendChild(newImage);
-    });
-    photoBlock.removeChild(photoBlock.children[0]);
+    var getOfferType = function () {
+      type.textContent = function () {
+        switch (item.offer.type) {
+          case 'flat':
+            return 'Квартира';
+          case 'bungalo':
+            return 'Бунгало';
+          case 'house':
+            return 'Дом';
+          case 'palace':
+            return 'Дворец';
+          default:
+            throw new Error('Неизвестный тип');
+        }
+      }();
+    };
+
+    var generatePhotos = function () {
+      item.offer.photos.forEach(function (src) {
+        var newImage = photo.cloneNode(true);
+        newImage.src = src;
+        newImage.alt = item.offer.title;
+        photoBlock.appendChild(newImage);
+      });
+      photoBlock.removeChild(photoBlock.children[0]);
+    };
+
+    item.offer.title.length !== 0 ? title.textContent = item.offer.title : setHiddenBlock(title);
+    item.offer.address.length !== 0 ? address.textContent = item.offer.address : setHiddenBlock(address);
+    item.offer.price.length !== 0 ? price.innerHTML = item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
+    item.offer.description.length !== 0 ? description.textContent = item.offer.description : setHiddenBlock(description);
+    item.offer.rooms.length !== 0 ? capacity.textContent = item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
+    item.offer.checkin.length !== 0 ? time.textContent = 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout : setHiddenBlock(time);
+    item.author.avatar ? image.setAttribute('src', item.author.avatar) : setHiddenBlock(image);
+    item.offer.features.length !== 0 ? generateFeature() : setHiddenBlock(featuresBlock);
+    item.offer.type.length !== 0 ? getOfferType() : setHiddenBlock(type);
+    item.offer.photos.length !== 0 ? generatePhotos() : setHiddenBlock(photoBlock);
 
     fragment.appendChild(element);
     map.appendChild(fragment);
