@@ -14,8 +14,16 @@
     window.requests.load(null, window.onSuccess, window.onSuccess);
     window.enableControls(formControls);
     window.enableControls(filterControls);
+    mainPin.removeEventListener('keydown', onEnterKeyPress);
     window.dragged = false;
   };
+
+  var onEnterKeyPress = function (evt) {
+    if (evt.keyCode === window.constants.KEY_ENTER) {
+      onMainPinClick();
+    }
+  };
+  mainPin.addEventListener('keydown', onEnterKeyPress);
 
   mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
