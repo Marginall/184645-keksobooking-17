@@ -5,26 +5,25 @@
   var mainPin = map.querySelector('.map__pin--main');
   var form = document.querySelector('.ad-form');
   var formControls = form.querySelectorAll('fieldset');
-  var MAX_WIDTH = 1200;
-  var MIN_WIDTH = 1;
-  var MAX_HEIGHT = 630;
-  var MIN_HEIGHT = 130;
-  var MAP_PIN_WIDTH = 65;
-  var MAP_PIN_HEIGHT = 44 + 22;
-  var dragged = true;
-
-  var setAdress = function (x, y) {
-    var address = form.querySelector('#address');
-    address.setAttribute('value', (x + (Math.floor(MAP_PIN_WIDTH / 2)) + ', ' + (y + MAP_PIN_HEIGHT)));
-  };
+  var filter = document.querySelector('.map__filters');
+  var filterControls = filter.querySelectorAll('fieldset, select');
+  window.dragged = true;
 
   var onMainPinClick = function () {
     map.classList.remove('map--faded');
-    window.load();
+    window.requests.load(null, window.onSuccess, window.onSuccess);
     window.enableControls(formControls);
-
-    dragged = false;
+    window.enableControls(filterControls);
+    mainPin.removeEventListener('keydown', onEnterKeyPress);
+    window.dragged = false;
   };
+
+  var onEnterKeyPress = function (evt) {
+    if (evt.keyCode === window.constants.KEY_ENTER) {
+      onMainPinClick();
+    }
+  };
+  mainPin.addEventListener('keydown', onEnterKeyPress);
 
   mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
@@ -50,25 +49,25 @@
       mainPin.style.left = (mainPin.offsetLeft - shift.x) + 'px';
       mainPin.style.top = (mainPin.offsetTop - shift.y) + 'px';
 
-      if (parseInt(mainPin.style.left, 10) < MIN_WIDTH) {
-        mainPin.style.left = MIN_WIDTH + 'px';
+      if (parseInt(mainPin.style.left, 10) < window.constants.MIN_WIDTH) {
+        mainPin.style.left = window.constants.MIN_WIDTH + 'px';
       }
 
-      if (parseInt(mainPin.style.left, 10) > MAX_WIDTH - MAP_PIN_WIDTH) {
-        mainPin.style.left = MAX_WIDTH - MAP_PIN_WIDTH + 'px';
+      if (parseInt(mainPin.style.left, 10) > window.constants.MAX_WIDTH - window.constants.MAP_PIN_WIDTH) {
+        mainPin.style.left = window.constants.MAX_WIDTH - window.constants.MAP_PIN_WIDTH + 'px';
       }
 
-      if (startCoords.y < MIN_HEIGHT) {
-        mainPin.style.top = MIN_HEIGHT + 'px';
+      if (startCoords.y < window.constants.MIN_HEIGHT) {
+        mainPin.style.top = window.constants.MIN_HEIGHT + 'px';
       }
 
-      if (startCoords.y > MAX_HEIGHT) {
-        mainPin.style.top = MAX_HEIGHT + 'px';
+      if (startCoords.y > window.constants.MAX_HEIGHT) {
+        mainPin.style.top = window.constants.MAX_HEIGHT + 'px';
       }
 
-      setAdress(parseInt(mainPin.style.left, 10), parseInt(mainPin.style.top, 10));
+      window.setAdress(parseInt(mainPin.style.left, 10), parseInt(mainPin.style.top, 10));
 
-      if (dragged) {
+      if (window.dragged) {
         onMainPinClick();
       }
     };

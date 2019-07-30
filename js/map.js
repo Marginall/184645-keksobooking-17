@@ -5,7 +5,6 @@
     var map = document.querySelector('.map');
     var mapPins = map.querySelectorAll('.map__pins')[0];
     var fragment = document.createDocumentFragment();
-    var NUMBER_OF_PINS = 5;
 
     var elementGenerate = function (i) {
       var templatePin = document.querySelector('#pin').content;
@@ -21,27 +20,37 @@
     };
 
     items.forEach(function (item, index) {
-      if (index < NUMBER_OF_PINS) {
+      if (item.offer && index < window.constants.NUMBER_OF_PINS) {
         elementGenerate(index);
       }
     });
 
+    window.removeMapPins = function () {
+      var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+      pins.forEach(function (item) {
+        item.remove();
+      });
+    };
+
     if (window.sort) {
-      while (mapPins.firstChild) {
-        mapPins.removeChild(mapPins.firstChild);
-      }
+      window.removeMapPins();
     }
 
     mapPins.appendChild(fragment);
 
-    var pin = map.querySelectorAll('.map__pin:not(.map__pin--main)');
+    var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
     var pinOnClickHandler = function (evt) {
+      var popups = document.querySelectorAll('.map__card');
       var data = JSON.parse(evt.currentTarget.getAttribute('data-offer'));
+      popups.forEach(function (item) {
+        item.remove();
+      });
+      evt.target.classList.add('map__pin--active');
       window.offerGenerate(data);
     };
 
-    if (pin.length) {
-      pin.forEach(function (item) {
+    if (pins.length) {
+      pins.forEach(function (item) {
         item.addEventListener('click', pinOnClickHandler);
       });
     }
