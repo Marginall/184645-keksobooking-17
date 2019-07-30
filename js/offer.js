@@ -69,11 +69,11 @@
     };
 
     title.textContent = item.offer.title.length ? item.offer.title : setHiddenBlock(title);
-    item.offer.address.length ? address.textContent = item.offer.address : setHiddenBlock(address);
-    item.offer.price.length ? price.innerHTML = item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
-    item.offer.description.length ? description.textContent = item.offer.description : setHiddenBlock(description);
-    item.offer.rooms.length ? capacity.textContent = item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
-    item.offer.checkin.length ? time.textContent = 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout : setHiddenBlock(time);
+    address.textContent = item.offer.address.length ? item.offer.address : setHiddenBlock(address);
+    price.innerHTML = item.offer.price.length ? item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
+    description.textContent = item.offer.description.length ? item.offer.description : setHiddenBlock(description);
+    capacity.textContent = item.offer.rooms.length ? item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
+    time.textContent = item.offer.checkin.length ? 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout : setHiddenBlock(time);
     item.author.avatar ? image.setAttribute('src', item.author.avatar) : setHiddenBlock(image);
     item.offer.features.length ? generateFeature() : setHiddenBlock(featuresBlock);
     item.offer.type.length ? getOfferType() : setHiddenBlock(type);
