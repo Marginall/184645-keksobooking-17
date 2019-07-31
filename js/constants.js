@@ -19,6 +19,8 @@
     HOUSE_MIN_PRICE: 5000,
     PALACE_MIN_PRICE: 10000,
     SUCCESS_STATUS: 200,
-    KEY_ENTER: 13
+    KEY_ENTER: 13,
+    SEND_URL: 'https://js.dump.academy/keksobooking',
+    LOAD_URL: 'https://js.dump.academy/keksobooking/data'
   };
 })();

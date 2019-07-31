@@ -3,20 +3,17 @@
 (function () {
   window.onLoad = function () {
     var map = document.querySelector('.map');
-    var mainPin = document.querySelector('.map__pin--main');
     var template = document.querySelector('#success').content;
     var element = template.cloneNode(true);
     var fragment = document.createDocumentFragment();
     window.dragged = true;
-
+    window.resetForm();
     fragment.appendChild(element);
     map.appendChild(fragment);
-    window.resetForm();
-    window.onCloseHandler();
-    window.removeMapPins();
-    window.disableControls();
-    map.classList.add('map--faded');
-    mainPin.setAttribute('style', 'left:' + window.constants.START_X + 'px;' + 'top:' + window.constants.START_Y + 'px;');
+
+    if (window.popupShow) {
+      window.onClosePopup();
+    }
 
     var removeOverlay = function (evt) {
       var overlay = document.querySelector('.success');

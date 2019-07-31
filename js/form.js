@@ -13,6 +13,7 @@
   var capacity = form.querySelector('.ad-form__element--capacity select');
   var timeIn = form.querySelector('#timein');
   var timeOut = form.querySelector('#timeout');
+  var resetFormButton = form.querySelector('.ad-form__reset');
 
   window.disableControls = function () {
     form.classList.add('ad-form--disabled');
@@ -127,11 +128,11 @@
     address.setAttribute('value', (x + (Math.floor(window.constants.MAP_PIN_WIDTH / 2)) + ', ' + (y + window.constants.MAP_PIN_HEIGHT)));
   };
 
-  window.resetForm = function () {
-    form.reset();
+  var onClickResetButton = function () {
+    window.resetForm();
   };
 
-  form.addEventListener('reset', window.resetForm);
+  resetFormButton.addEventListener('click', onClickResetButton);
 
   window.disableControls();
 })();

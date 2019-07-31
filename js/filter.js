@@ -34,7 +34,10 @@
       }
     });
 
-    window.onCloseHandler();
+    if (window.popupShow) {
+      window.onClosePopup();
+    }
+
     window.pinGenerate(sortItems);
   };
 

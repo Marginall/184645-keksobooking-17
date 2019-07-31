@@ -14,7 +14,6 @@
     window.requests.load(null, window.onSuccess, window.onSuccess);
     window.enableControls(formControls);
     window.enableControls(filterControls);
-    mainPin.removeEventListener('keydown', onEnterKeyPress);
     window.dragged = false;
   };
 
