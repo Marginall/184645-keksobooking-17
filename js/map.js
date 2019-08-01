@@ -39,7 +39,7 @@
     mapPins.appendChild(fragment);
 
     var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
-    var pinOnClickHandler = function (evt) {
+    var onClickPinHandler = function (evt) {
       var popups = document.querySelectorAll('.map__card');
       var data = JSON.parse(evt.currentTarget.getAttribute('data-offer'));
       popups.forEach(function (item) {
@@ -51,7 +51,7 @@
 
     if (pins.length) {
       pins.forEach(function (item) {
-        item.addEventListener('click', pinOnClickHandler);
+        item.addEventListener('click', onClickPinHandler);
       });
     }
   };

@@ -103,23 +103,27 @@
     fragment.appendChild(element);
     map.appendChild(fragment);
 
-    window.onClosePopup = function () {
+    window.closePopup = function () {
       var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
       pins.forEach(function (pin) {
         pin.classList.remove('map__pin--active');
       });
       card.remove();
-      close.removeEventListener('click', window.onClosePopup);
+      close.removeEventListener('click', onCloseClick);
       document.removeEventListener('keydown', onEscapeKeyClose);
     };
 
-    var onEscapeKeyClose = function (evt) {
+    var onEscapeKeyPress = function (evt) {
       if (evt.keyCode === window.constants.KEY_ESC) {
-        window.onClosePopup();
+        window.closePopup();
       }
     };
 
-    close.addEventListener('click', window.onClosePopup);
-    document.addEventListener('keydown', onEscapeKeyClose);
+    var onCloseClick = function () {
+      window.closePopup();
+    };
+
+    close.addEventListener('click', onCloseClick);
+    document.addEventListener('keydown', onEscapeKeyPress);
   };
 })();

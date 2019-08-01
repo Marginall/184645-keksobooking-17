@@ -63,7 +63,11 @@
     }
   };
 
-  roomNumber.addEventListener('change', capacityValidate);
+  var onChangeCapacity = function () {
+    capacityValidate();
+  };
+
+  roomNumber.addEventListener('change', onChangeCapacity);
 
   form.addEventListener('submit', function (evt) {
     evt.preventDefault();
@@ -85,7 +89,7 @@
     }
   };
 
-  var onChangeType = function (evt) {
+  var typeValidate = function (evt) {
     if (evt.target.value === 'bungalo') {
       price.setAttribute('min', window.constants.BUNGALO_MIN_PRICE);
       price.setAttribute('placeholder', '0');
@@ -99,6 +103,10 @@
       price.setAttribute('min', window.constants.PALACE_MIN_PRICE);
       price.setAttribute('placeholder', '10000');
     }
+  };
+
+  var onChangeType = function (evt) {
+    typeValidate(evt);
   };
 
   type.addEventListener('change', onChangeType);

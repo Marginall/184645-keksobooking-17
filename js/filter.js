@@ -35,7 +35,7 @@
     });
 
     if (window.popupShow) {
-      window.onClosePopup();
+      window.closePopup();
     }
 
     window.pinGenerate(sortItems);

@@ -12,7 +12,7 @@
     map.appendChild(fragment);
 
     if (window.popupShow) {
-      window.onClosePopup();
+      window.closePopup();
     }
 
     var removeOverlay = function (evt) {

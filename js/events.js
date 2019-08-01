@@ -11,7 +11,7 @@
 
   var onMainPinClick = function () {
     map.classList.remove('map--faded');
-    window.requests.load(null, window.onSuccess, window.onSuccess);
+    window.requests.load(null, window.onSuccess, window.onError);
     window.enableControls(formControls);
     window.enableControls(filterControls);
     window.dragged = false;
