@@ -26,6 +26,10 @@
 
   mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
+    var minPositionLeft = window.constants.MIN_WIDTH - window.constants.MAP_PIN_WIDTH / 2;
+    var maxPositionRight = window.constants.MAX_WIDTH - window.constants.MAP_PIN_WIDTH / 2;
+    var minPositionTop = window.constants.MIN_HEIGHT - window.constants.MAP_PIN_HEIGHT;
+    var maxPositionBottom = window.constants.MAX_HEIGHT - window.constants.MAP_PIN_HEIGHT;
 
     var startCoords = {
       x: evt.clientX,
@@ -48,20 +52,20 @@
       mainPin.style.left = (mainPin.offsetLeft - shift.x) + 'px';
       mainPin.style.top = (mainPin.offsetTop - shift.y) + 'px';
 
-      if (mainPin.offsetLeft < (window.constants.MIN_WIDTH - window.constants.MAP_PIN_WIDTH / 2)) {
-        mainPin.style.left = (window.constants.MIN_WIDTH - window.constants.MAP_PIN_WIDTH / 2) + 'px';
+      if (mainPin.offsetLeft < minPositionLeft) {
+        mainPin.style.left = minPositionLeft + 'px';
       }
 
-      if (mainPin.offsetLeft > (window.constants.MAX_WIDTH - window.constants.MAP_PIN_WIDTH / 2)) {
-        mainPin.style.left = (window.constants.MAX_WIDTH - window.constants.MAP_PIN_WIDTH / 2) + 'px';
+      if (mainPin.offsetLeft > maxPositionRight) {
+        mainPin.style.left = maxPositionRight + 'px';
       }
 
-      if (mainPin.offsetTop < (window.constants.MIN_HEIGHT - window.constants.MAP_PIN_HEIGHT)) {
-        mainPin.style.top = (window.constants.MIN_HEIGHT - window.constants.MAP_PIN_HEIGHT) + 'px';
+      if (mainPin.offsetTop < minPositionTop) {
+        mainPin.style.top = minPositionTop + 'px';
       }
 
-      if (mainPin.offsetTop > (window.constants.MAX_HEIGHT - window.constants.MAP_PIN_HEIGHT)) {
-        mainPin.style.top = (window.constants.MAX_HEIGHT - window.constants.MAP_PIN_HEIGHT) + 'px';
+      if (mainPin.offsetTop > maxPositionBottom) {
+        mainPin.style.top = maxPositionBottom + 'px';
       }
 
       window.setAdress(parseInt(mainPin.style.left, 10), parseInt(mainPin.style.top, 10));
