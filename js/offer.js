@@ -71,9 +71,9 @@
 
     title.textContent = item.offer.title.length ? item.offer.title : setHiddenBlock(title);
     address.textContent = item.offer.address.length ? item.offer.address : setHiddenBlock(address);
-    price.innerHTML = item.offer.price.length ? item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
+    price.innerHTML = item.offer.price > -1 ? item.offer.price + ' ' + '&#x20bd;' + '<span>/ночь</span>' : setHiddenBlock(price);
     description.textContent = item.offer.description.length ? item.offer.description : setHiddenBlock(description);
-    capacity.textContent = item.offer.rooms.length ? item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
+    capacity.textContent = item.offer.rooms > -1 ? item.offer.rooms + ' комнаты для ' + item.offer.guests + ' гостей' : setHiddenBlock(capacity);
     time.textContent = item.offer.checkin.length ? 'Заезд после' + ' ' + item.offer.checkin + ', выезд до ' + item.offer.checkout : setHiddenBlock(time);
 
     if (item.author.avatar) {
