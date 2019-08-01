@@ -43,7 +43,6 @@
 
   var filterPrice = function (item, value) {
     var price = item.offer.price;
-
     if (value === 'high') {
       return price > window.constants.HIGH_PRICE;
     } else if (value === 'low') {
@@ -51,7 +50,6 @@
     } else if (value === 'middle') {
       return price > window.constants.LOW_PRICE && price < window.constants.HIGH_PRICE;
     }
-
     return false;
   };
 
