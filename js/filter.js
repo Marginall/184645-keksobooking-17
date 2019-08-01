@@ -42,22 +42,16 @@
   };
 
   var filterPrice = function (item, value) {
+    var price = item.offer.price;
+
     if (value === 'high') {
-      if (item.offer.price > window.constants.HIGH_PRICE) {
-        return true;
-      }
-      return false;
+      return price > window.constants.HIGH_PRICE;
     } else if (value === 'low') {
-      if (item.offer.price < window.constants.LOW_PRICE) {
-        return true;
-      }
-      return false;
+      return price < window.constants.LOW_PRICE;
     } else if (value === 'middle') {
-      if (item.offer.price > window.constants.LOW_PRICE && item.offer.price < window.constants.HIGH_PRICE) {
-        return true;
-      }
-      return false;
+      return price > window.constants.LOW_PRICE && price < window.constants.HIGH_PRICE;
     }
+
     return false;
   };
 
