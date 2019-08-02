@@ -110,7 +110,7 @@
       });
       card.remove();
       close.removeEventListener('click', onCloseClick);
-      document.removeEventListener('keydown', onEscapeKeyClose);
+      document.removeEventListener('keydown', onEscapeKeyPress);
     };
 
     var onEscapeKeyPress = function (evt) {

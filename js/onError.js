@@ -11,20 +11,28 @@ window.onError = function () {
   var errorButton = document.querySelector('.error__button');
   var overlay = block.querySelector('.error');
 
-  errorButton.addEventListener('click', function () {
-    overlay.remove();
-  });
-
   var removeOverlay = function (evt) {
     overlay.remove();
-    if (evt.keyCode === window.constants.KEY_ESC) {
-      overlay.remove();
-    }
-
-    document.removeEventListener('click', removeOverlay);
-    document.removeEventListener('keydown', removeOverlay);
   };
 
-  document.addEventListener('click', removeOverlay);
-  document.addEventListener('keydown', removeOverlay);
+  errorButton.addEventListener('click', function () {
+    removeOverlay();
+  });
+
+  var onScreenClick = function () {
+    removeOverlay();
+    document.removeEventListener('click', onScreenClick);
+    document.removeEventListener('keydown', onPressEscape);
+  };
+
+  var onPressEscape = function (evt) {
+    if (evt.keyCode === window.constants.KEY_ESC) {
+      removeOverlay();
+      document.removeEventListener('click', onScreenClick);
+      document.removeEventListener('keydown', onPressEscape);
+    }
+  };
+
+  document.addEventListener('click', onScreenClick);
+  document.addEventListener('keydown', onPressEscape);
 };
