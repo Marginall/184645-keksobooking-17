@@ -42,13 +42,13 @@
   };
 
   var filterPrice = function (item, value) {
-    var price = item.offer.price;
+    var itemPrice = item.offer.price;
     if (value === 'high') {
-      return price > window.constants.HIGH_PRICE;
+      return itemPrice > window.constants.HIGH_PRICE;
     } else if (value === 'low') {
-      return price < window.constants.LOW_PRICE;
+      return itemPrice < window.constants.LOW_PRICE;
     } else if (value === 'middle') {
-      return price > window.constants.LOW_PRICE && price < window.constants.HIGH_PRICE;
+      return itemPrice > window.constants.LOW_PRICE && itemPrice < window.constants.HIGH_PRICE;
     }
     return false;
   };

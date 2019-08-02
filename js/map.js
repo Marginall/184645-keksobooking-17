@@ -42,8 +42,8 @@
 
     var onClickMainPin = function (evt) {
       var popups = document.querySelectorAll('.map__card');
-      var data = evt.currentTarget.dataset.offer;
-      var data = JSON.parse(data);
+      var dataOffer = evt.currentTarget.dataset.offer;
+      var data = JSON.parse(dataOffer);
       popups.forEach(function (item) {
         item.remove();
       });

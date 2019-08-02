@@ -15,7 +15,7 @@
       window.closePopup();
     }
 
-    var removeOverlay = function (evt) {
+    var removeOverlay = function () {
       var overlay = document.querySelector('.success');
       overlay.remove();
     };

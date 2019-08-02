@@ -11,7 +11,7 @@ window.onError = function () {
   var errorButton = document.querySelector('.error__button');
   var overlay = block.querySelector('.error');
 
-  var removeOverlay = function (evt) {
+  var removeOverlay = function () {
     overlay.remove();
   };
 
