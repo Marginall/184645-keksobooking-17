@@ -39,9 +39,11 @@
     mapPins.appendChild(fragment);
 
     var pins = map.querySelectorAll('.map__pin:not(.map__pin--main)');
-    var onClickPinHandler = function (evt) {
+
+    var onClickMainPin = function (evt) {
       var popups = document.querySelectorAll('.map__card');
-      var data = JSON.parse(evt.currentTarget.getAttribute('data-offer'));
+      var data = evt.currentTarget.dataset.offer;
+      var data = JSON.parse(data);
       popups.forEach(function (item) {
         item.remove();
       });
@@ -51,7 +53,7 @@
 
     if (pins.length) {
       pins.forEach(function (item) {
-        item.addEventListener('click', onClickPinHandler);
+        item.addEventListener('click', onClickMainPin);
       });
     }
   };
